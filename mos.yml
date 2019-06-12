@@ -1,0 +1,53 @@
+author: Liviu Nicolescu <nliviu@gmail.com>
+type: lib
+description: LED definitions for different boards
+version: 1.0
+manifest_version: 2017-09-29
+
+includes:
+  - include
+sources:
+  - src
+config_schema:
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/boards
+
+build_vars:
+# board types
+#  0 - Wemos Lolin 32/32 Pro, D32/D32 Pro - led1.pin=5, led1.active_high=false
+#  1 - ESP32 mini       - led1.pin=5, led1.active_high=true
+#  2 - Wemos D1         - led1.pin=2, led1.active_high=false
+#  3 - ESP32 DevKit v1  - led1.pin=2, led1.active_high=true
+  BOARD_LED: 0
+
+conds:
+# LED config
+# Lolin
+  - when: build_vars.BOARD_LED == "0"
+    apply:
+      config_schema:
+        - ["board.led1.pin", 5]
+        - ["board.led1.active_high", false]
+# mini32
+  - when: build_vars.BOARD_LED == "1"
+    apply:
+      config_schema:
+        - ["board.led1.pin", 5]
+        - ["board.led1.active_high", true]
+# Wemos D1
+  - when: build_vars.BOARD_LED == "2"
+    apply:
+      config_schema:
+        - ["board.led1.pin", 2]
+        - ["board.led1.active_high", false]
+# ESP32 DevKit v1
+  - when: build_vars.BOARD_LED == "3"
+    apply:
+      config_schema:
+        - ["board.led1.pin", 2]
+        - ["board.led1.active_high", true]
+
+tags:
+  - c
+
