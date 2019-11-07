@@ -1,6 +1,6 @@
 author: Liviu Nicolescu <nliviu@gmail.com>
 type: lib
-description: LED definitions for different boards
+description: led definitions for different boards
 version: 1.0
 manifest_version: 2017-09-29
 
@@ -15,11 +15,12 @@ libs:
 
 build_vars:
 # board types
+# -1 - not defined
 #  0 - Wemos Lolin 32/32 Pro, D32/D32 Pro - led1.pin=5, led1.active_high=false
 #  1 - ESP32 mini       - led1.pin=5, led1.active_high=true
 #  2 - Wemos D1         - led1.pin=2, led1.active_high=false
 #  3 - ESP32 DevKit v1  - led1.pin=2, led1.active_high=true
-  BOARD_LED: 0
+  BOARD_LED: -1
 
 conds:
 # LED config
