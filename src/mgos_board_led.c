@@ -54,6 +54,6 @@ void mgos_board_led_free(struct mgos_board_led **led) {
 
 void mgos_board_led_set(const struct mgos_board_led *led, const bool on) {
   if (led = NULL) {
-    mgos_gpio_set(led->led1, led->led1_active_high ? on : !on);
+    mgos_gpio_write(led->led1, led->led1_active_high ? on : !on);
   }
 }
