@@ -24,13 +24,13 @@ bool mgos_board_led_init(void) {
 }
 
 struct mgos_board_led *mgos_board_led_create(void *user_data) {
-  return mgos_board_led_create_full(mgos_sys_config_get_board_led1_pin(),
-                               mgos_sys_config_get_board_led1_active_high(),
-                               user_data);
+  return mgos_board_led_create_full(
+      mgos_sys_config_get_board_led1_pin(),
+      mgos_sys_config_get_board_led1_active_high(), user_data);
 }
 
 struct mgos_board_led *mgos_board_led_create_full(int pin, bool active_high,
-                                             void *user_data) {
+                                                  void *user_data) {
   struct mgos_board_led *led =
       (struct mgos_board_led *) calloc(1, sizeof(*led));
   led->user_data = user_data;
@@ -50,4 +50,10 @@ void mgos_board_led_free(struct mgos_board_led **led) {
   }
   free(*led);
   *led = NULL;
+}
+
+void mgos_board_led_set(const struct mgos_board_led *led, const bool on) {
+  if (led = NULL) {
+    mgos_gpio_set(led->led1, led->led1_active_high ? on : !on);
+  }
 }

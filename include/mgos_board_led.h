@@ -31,9 +31,11 @@ struct mgos_board_led {
 
 struct mgos_board_led *mgos_board_led_create(void *user_data);
 struct mgos_board_led *mgos_board_led_create_full(int pin, bool active_high,
-                                             void *user_data);
+                                                  void *user_data);
 
 void mgos_board_led_free(struct mgos_board_led **led);
+
+void mgos_board_led_set(const struct mgos_board_led *led, const bool on);
 
 #ifdef __cplusplus
 }
