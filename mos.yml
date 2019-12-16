@@ -20,6 +20,7 @@ build_vars:
 #  1 - ESP32 mini       - led1.pin=5, led1.active_high=true
 #  2 - Wemos D1         - led1.pin=2, led1.active_high=false
 #  3 - ESP32 DevKit v1  - led1.pin=2, led1.active_high=true
+#  4 - TTGO T-Call      - led1.pin=13, led1.active_high=true
   BOARD_LED: -1
 
 conds:
@@ -47,6 +48,12 @@ conds:
     apply:
       config_schema:
         - ["board.led1.pin", 2]
+        - ["board.led1.active_high", true]
+# TTGO T-Call      - led1.pin=13, led1.active_high=true
+  - when: build_vars.BOARD_LED == "4"
+    apply:
+      config_schema:
+        - ["board.led1.pin", 13]
         - ["board.led1.active_high", true]
 
 tags:
