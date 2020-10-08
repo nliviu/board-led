@@ -57,3 +57,9 @@ void mgos_board_led_set(const struct mgos_board_led *led, const bool on) {
     mgos_gpio_write(led->led1, led->led1_active_high ? on : !on);
   }
 }
+
+void mgos_board_led_toggle(const struct mgos_board_led *led){
+  if (led != NULL) {
+    mgos_gpio_toggle(led->led1);
+  }
+}

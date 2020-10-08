@@ -37,6 +37,8 @@ void mgos_board_led_free(struct mgos_board_led **led);
 
 void mgos_board_led_set(const struct mgos_board_led *led, const bool on);
 
+void mgos_board_led_toggle(const struct mgos_board_led *led);
+
 #ifdef __cplusplus
 }
 #endif
