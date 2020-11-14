@@ -16,6 +16,7 @@
 
 #include "mgos_gpio.h"
 #include "mgos_sys_config.h"
+#include "mgos_timers.h"
 
 #include "mgos_board_led.h"
 
@@ -58,8 +59,23 @@ void mgos_board_led_set(const struct mgos_board_led *led, const bool on) {
   }
 }
 
-void mgos_board_led_toggle(const struct mgos_board_led *led){
+void mgos_board_led_toggle(const struct mgos_board_led *led) {
   if (led != NULL) {
     mgos_gpio_toggle(led->led1);
+  }
+}
+
+static void blink_timer_cb(void *arg) {
+  const struct mgos_board_led *led = (const struct mgos_board_led *) arg;
+  mgos_gpio_blink(led->led1, 0, 0);
+}
+
+void mgos_board_led_blink(const struct mgos_board_led *led, int on_ms,
+                          int off_ms, int timer_ms) {
+  if (led != NULL) {
+    mgos_gpio_blink(led->led1, on_ms, off_ms);
+    if (timer_ms > 0) {
+      mgos_set_timer(timer_ms, 0, blink_timer_cb, (void *) led);
+    }
   }
 }
