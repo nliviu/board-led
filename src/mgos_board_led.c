@@ -68,6 +68,7 @@ void mgos_board_led_toggle(const struct mgos_board_led *led) {
 static void blink_timer_cb(void *arg) {
   const struct mgos_board_led *led = (const struct mgos_board_led *) arg;
   mgos_gpio_blink(led->led1, 0, 0);
+  mgos_gpio_write(led->led1, led->led1_active_high ? false : true);
 }
 
 void mgos_board_led_blink(const struct mgos_board_led *led, int on_ms,
