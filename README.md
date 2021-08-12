@@ -7,3 +7,4 @@ Use `-build-var BOARD_LED=x` to setup the led pin for the board where x is:
  - 1 - ESP32 mini       - led1.pin=5, led1.active_high=true
  - 2 - Wemos D1         - led1.pin=2, led1.active_high=false
  - 3 - ESP32 DevKit v1  - led1.pin=2, led1.active_high=true
+ - 4 - TTGO T-Call      - led1.pin=13, led1.active_high=true
